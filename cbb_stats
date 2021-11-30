@@ -1,0 +1,15 @@
+import sportsipy
+from sportsipy.ncaab.teams import Teams
+import csv
+
+teams = Teams()
+
+with open('team_stats.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    # header row
+    writer.writerow(['team_name', 'conf', 'ft%', '2pt%', '3pt%',
+                    'turnover%', 'rebound%', 'opp_2pt%', 'opp_3pt%', 'win%'])
+
+    for team in teams:
+        writer.writerow([team.name, team.conference, team.free_throws_per_field_goal_attempt, team.two_point_field_goal_percentage, team.three_point_field_goal_percentage,
+                        team.turnover_percentage, team.total_rebound_percentage, team.opp_two_point_field_goal_percentage, team.opp_three_point_field_goal_percentage, team.win_percentage])
